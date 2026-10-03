@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBHO SARADIYA — DEVI WARRIOR | SVIST</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display & Inter -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vermilion: '#C62828',
+                        maroonDark: '#5D0A0A',
+                        maroonDeep: '#3B0404',
+                        gold: '#FFD166',
+                        goldLight: '#FFE8A3',
+                        ivory: '#FFF8E7',
+                        charcoal: '#1D1717'
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        inter: ['"Inter"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #3B0404;
+            color: #FFF8E7;
+            overflow-x: hidden;
+        }
+
+        /* STREAMING_CHUNK:Initializing custom styling variables and base styles... */
+        :root {
+            --color-deep-red: #8B0000;
+            --color-vermilion: #E32636;
+            --color-gold: #FFD700;
+            --color-cream: #FFFDD0;
+            --color-maroon: #4A0E0E;
+            --color-dark-bg: #1A0505;
+        }
+
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+
+
+        /* Glowing golden aura and borders */
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(255, 209, 102, 0.4);
+        }
+
+        .gold-glow-lg {
+            box-shadow: 0 0 40px rgba(255, 209, 102, 0.6);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 15px rgba(255, 209, 102, 0.6);
+        }
+
+        /* Alpana background pattern overlay */
+        .alpana-bg {
+            background-image: radial-gradient(circle, rgba(255, 209, 102, 0.07) 10%, transparent 10%), radial-gradient(circle, rgba(198, 40, 40, 0.1) 10%, transparent 10%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #3B0404;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #C62828;
+            border-radius: 5px;
+            border: 2px solid #FFD166;
+        }
+
+        /* Floating animations for petals & particles */
+        @keyframes floatPetal {
+            0% {
+                transform: translateY(-10vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(110vh) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .petal {
+            position: fixed;
+            background: #FFD166;
+            border-radius: 50% 0 50% 50%;
+            pointer-events: none;
+            z-index: 99;
+            animation: floatPetal linear infinite;
+        }
+
+        /* Pulse gold border */
+        @keyframes borderPulse {
+
+            0%,
+            100% {
+                border-color: rgba(255, 209, 102, 0.5);
+            }
+
+            50% {
+                border-color: rgba(255, 209, 102, 1);
+            }
+        }
+
+        .animate-border-pulse {
+            animation: borderPulse 3s infinite;
+        }
+
+        /* Pulse gold glow */
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 40px rgba(255, 209, 102, 0.6);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(255, 209, 102, 0.8);
+            }
+        }
+
+        .animate-glow-pulse {
+            animation: glowPulse 3s infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-maroonDark text-ivory antialiased alpana-bg">
+
+    <div id="petals-container" class="absolute inset-0 overflow-hidden pointer-events-none z-10"></div>
+
+    <nav
+        class="sticky top-0 z-50 bg-maroonDeep/90 backdrop-blur-md border-b border-gold/30 shadow-xl transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="w-10 h-10 rounded-full bg-vermilion border-2 border-gold flex items-center justify-center text-gold font-playfair font-bold text-xl gold-glow">
+                        ॐ
+                    </div>
+                    <div>
+                        <span class="font-playfair font-bold text-lg sm:text-xl text-gold block tracking-wide">DEVI
+                            WARRIOR</span>
+                        <span class="text-xs text-ivory/70 tracking-widest uppercase">SVIST AI & DS</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#hero"
+                        class="text-ivory hover:text-gold transition font-medium text-sm tracking-wider uppercase">Home</a>
+                    <a href="#about"
+                        class="text-ivory hover:text-gold transition font-medium text-sm tracking-wider uppercase">About</a>
+                    <a href="#team"
+                        class="text-ivory hover:text-gold transition font-medium text-sm tracking-wider uppercase">Team</a>
+                    <a href="#institution"
+                        class="text-ivory hover:text-gold transition font-medium text-sm tracking-wider uppercase">Institution</a>
+                    <button onclick="openWishesModal()"
+                        class="bg-gradient-to-r from-vermilion to-maroonDark border border-gold text-gold px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase hover:bg-gold hover:text-maroonDark transition duration-300 shadow-md">
+                        <i class="fa-solid fa-om mr-1"></i> Send Wishes
+                    </button>
+                </div>
+                <br>
+                <div>
+                    <link rel="stylesheet" href="https://cloudflare.com">
+                    <style>
+                        #btnText {
+                            font-size: 24px;
+                        }
+                    </style>
+                    <audio id="myAudio" src="background-music.mp3"></audio>
+                    <button id="musicButton" onclick="toggleMusic()" class="text-gold focus:outline-none p-2 text-2xl"
+                        aria-multiselectable="true">🔈</button>
+
+                    <script>
+                        function toggleMusic() {
+                            var audio = document.getElementById("myAudio");
+                            var text = document.getElementById("btnText");
+                            if (audio.paused) {
+                                audio.play();
+                                document.getElementById("musicButton").textContent = "🔇";
+                            } else {
+                                audio.pause();
+                                document.getElementById("musicButton").textContent = "🔊";
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gold focus:outline-none p-2 text-2xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-maroonDeep/95 border-b border-gold/30 px-4 pt-2 pb-4 space-y-3">
+            <a href="#hero" class="block text-ivory hover:text-gold font-medium py-1">Home</a>
+            <a href="#team" class="block text-ivory hover:text-gold font-medium py-1">Team</a>
+            <a href="#institution" class="block text-ivory hover:text-gold font-medium py-1">Institution</a>
+            <button onclick="openWishesModal()"
+                class="w-full text-center bg-vermilion border border-gold text-gold py-2 rounded-lg font-semibold uppercase text-xs">
+                Send Puja Wishes
+            </button>
+        </div>
+    </nav>
+
+
+
+
+    <header id="hero" class="relative min-h-screen flex items-center justify-center pt-20 pb-16 px-4 overflow-hidden">
+        <!-- Radial Background Glow -->
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-vermilion/30 via-maroonDark to-maroonDeep pointer-events-none">
+        </div>
+        <div
+            class="absolute w-96 h-96 bg-gold/10 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+        </div>
+
+        <div class="relative z-20 max-w-5xl mx-auto text-center">
+            <!-- Festive Badge -->
+            <div
+                class="inline-flex items-center space-x-2 bg-maroonDeep/80 border border-gold/50 px-4 py-1.5 rounded-full mb-6 gold-glow animate-border-pulse">
+                <!-- <p class="font-bengali text-lg sm:text-xl text-stone-800 leading-relaxed max-w-xl mx-auto bg-festive-gold/10 p-6 rounded-xl border border-festive-gold/40 shadow-inner">
+                <a><img src="d.png" ></a>
+                </p> -->
+                <span class="text-gold text-sm">🪔</span>
+                <span class="text-xs uppercase tracking-widest text-gold font-semibold">Durgotsav 2026 Celebration</span>
+                <span class="text-gold text-sm">🪔</span>
+            </div>
+
+            <!-- SECTION 2: BENGALI GREETING AND INTERACTIVE INVITATION CARD -->
+            <section id="greetings"
+                class="py-24 px-4 relative bg-gradient-to-b from-festive-darkBg via-festive-maroon/30 to-festive-darkBg overflow-hidden">
+                <div class="max-w-4xl mx-auto text-center space-y-12">
+                    <div class="space-y-4">
+                        <h2
+                            class="font-bengali text-4xl sm:text-6xl font-bold text-festive-gold drop-shadow-[0_2px_10px_rgba(255,215,0,0.4)]">
+                            শুভ শারদীয়া
+                        </h2>
+                        <p
+                            class="font-bengali text-xl sm:text-2xl text-festive-cream/90 max-w-2xl mx-auto leading-relaxed">
+                            মা দুর্গার আশীর্বাদে সবার জীবন ভরে উঠুক সুখ, শান্তি ও আনন্দে।
+                        </p>
+                    </div>
+
+                    <!-- College & Department Info Box -->
+                    <div
+                        class="bg-maroonDeep/70 border border-gold/40 rounded-2xl p-6 md:p-8 max-w-3xl mx-auto backdrop-blur-md gold-glow mb-10 shadow-2xl">
+                        <h2 class="text-lg sm:text-xl font-bold text-gold uppercase tracking-wider mb-2">
+                            Swami Vivekananda Institute of Science and Technology
+                        </h2>
+                        <div class="w-24 h-0.5 bg-gold mx-auto my-3 opacity-60"></div>
+                        <p class="text-sm sm:text-base font-medium text-ivory/90 tracking-wide uppercase">
+                            Department: Artificial Intelligence and Data Science
+                        </p>
+                    </div>
+
+                    
+
+                    <!-- Subtitle -->
+                    <p
+                        class="text-xl sm:text-2xl md:text-3xl font-light text-ivory/90 tracking-wide mb-8 font-playfair italic">
+                        Devi Warrior Presents
+                    </p>
+                    <!-- Interactive Envelope / Invitation Card Wrapper -->
+                    <div class="relative w-full max-w-2xl mx-auto perspective-1000 mt-8">
+                        <!-- Invitation Card Container -->
+                        <div id="invitation-card"
+                            class="relative bg-gradient-to-br from-festive-cream to-[#F5E6BE] text-festive-maroon rounded-2xl p-8 sm:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.7)] border-4 border-festive-gold transition-all duration-700 transform hover:scale-[1.01]">
+                            <!-- Decorative corner motifs -->
+                            <div
+                                class="absolute top-3 left-3 w-8 h-8 border-t-2 border-l-2 border-festive-deepRed pointer-events-none">
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 w-8 h-8 border-t-2 border-r-2 border-festive-deepRed pointer-events-none">
+                            </div>
+                            <div
+                                class="absolute bottom-3 left-3 w-8 h-8 border-b-2 border-l-2 border-festive-deepRed pointer-events-none">
+                            </div>
+                            <div
+                                class="absolute bottom-3 right-3 w-8 h-8 border-b-2 border-r-2 border-festive-deepRed pointer-events-none">
+                            </div>
+
+                            <!-- Closed State Content (Initially Visible) -->
+                            <div id="card-closed-content" class="space-y-6 text-center">
+                                <div
+                                    class="inline-block p-2 rounded-full bg-festive-deepRed/10 text-festive-deepRed mb-2">
+                                    <i class="fa-solid fa-sparkles text-2xl text-festive-vermilion"></i>
+                                </div>
+
+
+                                <h5 class="font-bengali font-bold text-3xl sm:text-4xl text-festive-deepRed">উদ্বোধন
+                                </h5>
+                                <br>
+                                <h3 class="font-bengali font-bold  ">
+                                    মৃত্তিকা মাঝে জাগে পরমাত্মা,
+                                    মায়ের চিন্ময়ী রূপ,<br>
+                                    বাহ্যিক আলো মুছে দিক আজ
+                                    মনের আঁধার কূপ।<br>
+                                    অসুর দহন হোক না এবার
+                                    নিজেরই ভেতরের পাপে,<br>
+                                    ধরণী জুড়াক শান্তির জলে,
+                                    মানুষের অনুতাপে।<br>
+                                    ঢাকের কাঠি কি শুধুই উৎসব?
+                                    নাকি এক আহ্বান—<br>
+                                    সব ভেদাভেদ ভুলে গিয়ে হোক
+                                    মানবতার জয়গান।<br>
+                                    চারটি দিনের আলো শুধু নয়,
+                                    এ তো এক মহাদীক্ষা,<br>
+                                    বিসর্জনেও বেঁচে থাক যেন
+                                    ভালোবাসার এই শিক্ষা। <br>
+                                </h3>
+
+                                <p class="font-bengali text-lg sm:text-xl text-stone-800 leading-relaxed max-w-xl mx-auto bg-festive-gold/10 p-6 rounded-xl border border-festive-gold/40 shadow-inner">
+                                    <a><img src="project.jpg" ></a>
+                                    </p>
+                                    <br>
+
+                                    <!-- Opened State Content (Initially Hidden) -->
+                                <div id="card-opened-content" class="hidden space-y-6 text-center animate-fadeIn py-2">
+                                    <div
+                                        class="inline-block p-2 rounded-full bg-festive-deepRed/10 text-festive-deepRed mb-2">
+                                        <i class="fa-solid fa-sparkles text-2xl text-festive-vermilion"></i>
+                                    </div>
+                                    <h3 class="font-bengali font-bold text-3xl sm:text-4xl text-festive-deepRed">
+                                        শুভ শারদীয়া!
+                                    </h3>
+                                    <div
+                                        class="space-y-3 font-bengali text-lg sm:text-xl text-stone-800 leading-relaxed max-w-xl mx-auto bg-festive-gold/10 p-6 rounded-xl border border-festive-gold/40 shadow-inner">
+                                        <p>মা দুর্গার আগমনে ভরে উঠুক চারপাশ।</p>
+                                        <p>সবার জীবনে আসুক সুখ, শান্তি, সমৃদ্ধি ও নতুন আশার আলো।</p>
+                                        <p>মায়ের আশীর্বাদে সুন্দর হোক প্রতিটি দিন।</p>
+                                        <p class="font-bold text-festive-deepRed pt-2 text-2xl">জয় মা দুর্গা!</p>
+                                    </div>
+                                    <button id="close-card-btn"
+                                        class="px-8 py-3 rounded-full bg-stone-800 text-festive-cream font-semibold text-sm tracking-wider hover:bg-stone-900 transition-colors shadow-md">
+                                        Close Card
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            <!-- Main Title -->
+                    <h1
+                        class="heading-font text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gold via-goldLight to-gold tracking-wider mb-4 text-glow">
+                        SUBHO SARADIYA
+                    </h1>
+            <!-- Call to Actions -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+
+                <a href="#team"
+                    class="w-full sm:w-auto bg-transparent border-2 border-gold text-gold font-bold px-8 py-3.5 rounded-full hover:bg-gold/10 transition transform hover:-translate-y-1 text-center tracking-wider uppercase text-sm">
+                    <i class="fa-solid fa-users mr-2"></i> Meet Our Team
+                </a>
+            </div>
+        </div>
+    </header>
+
+<section id="about" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto align-center" >
+    <div class="text-center mb-16 align-center" >
+        <span class="text-gold uppercase tracking-widest text-xs font-semibold block mb-2">Devi Warrior Collective</span>
+        <h2 class="heading-font text-3xl sm:text-5xl font-bold text-gold mb-4">About Devi Warrior</h2>
+        <p class="heading-font italic text-ivory/80 text-base sm:text-lg">
+            "United by creativity, driven by technology, inspired by Maa Durga."
+        </p>
+        <div class="w-32 h-1 bg-gradient-to-r from-gold via-gold to-transparent mx-auto mt-6 mb-8 allign-center"></div>
+    </div>
+
+    <div class=" text-gold mb-4 align-center" >
+    
+
+    
+        <div class="bg-festive-gold/10 p-6 rounded-xl border align-center allign-center border-festive-gold/40 animate-pulse align-center shadow-inner allign-center">
+            <h3 class="font-bengali font-bold align-center colour-yellow ">Our Mission</h3>
+            <p class="font-bengali align-center  align-center ">
+                Our vision is to provide a platform for individuals and organizations to showcase their creativity and
+                innovation, while also empowering them to harness the power of technology to drive positive change in
+                their lives and communities.
+            </p>
+        </div>
+    </div>
+</section>
+
+    <section id="team" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="w-full h-full object-cover">
+            <span class="text-gold uppercase tracking-widest text-xs font-semibold block mb-2">Devi Warrior
+                Collective</span>
+            <h2 class="heading-font text-3xl sm:text-5xl font-bold text-gold mb-4">TEAM DEVI WARRIOR</h2>
+            <p class="heading-font italic text-ivory/80 text-base sm:text-lg">
+                "United by creativity, driven by technology, inspired by Maa Durga."
+            </p>
+            <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-6"></div>
+        </div>
+
+        <!-- 6 Team Members Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Member 1 -->
+            <div
+                class="bg-maroonDeep/90 border border-gold/40 rounded-3xl p-6 text-center gold-glow transition duration-300 hover:-translate-y-2 hover:border-gold group">
+                <div
+                    class="relative w-32 h-32 mx-auto mb-6 rounded-full p-1 bg-gradient-to-r from-gold via-vermilion to-gold gold-glow">
+                    <div
+                        class="w-full h-full rounded-full bg-maroonDark flex items-center justify-center text-gold font-playfair text-3xl font-bold overflow-hidden border-2 border-maroonDark">
+                        <span class="group-hover:scale-110 transition duration-300"></span>
+                        <img src="ahona.jpg" alt="Member 1" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <h3 class="heading-font text-xl font-bold text-gold mb-1">Ahona Chakraborty</h3>
+                <p
+                    class="text-xs uppercase tracking-widest text-vermilion font-semibold mb-3 bg-gold/10 py-1 px-3 rounded-full inline-block">
+                    Team creater and craft Designer</p>
+
+
+            </div>
+
+            <!-- Member 2 -->
+            <div
+                class="bg-maroonDeep/90 border border-gold/40 rounded-3xl p-6 text-center gold-glow transition duration-300 hover:-translate-y-2 hover:border-gold group">
+                <div
+                    class="relative w-32 h-32 mx-auto mb-6 rounded-full p-1 bg-gradient-to-r from-gold via-vermilion to-gold gold-glow">
+                    <div
+                        class="w-full h-full rounded-full bg-maroonDark flex items-center justify-center text-gold font-playfair text-3xl font-bold overflow-hidden border-2 border-maroonDark">
+                        <span class="group-hover:scale-110 transition duration-300"></span>
+                        <img src="pulakita.jpg" alt="Member 2" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <h3 class="heading-font text-xl font-bold text-gold mb-1">Pulakita Mitra</h3>
+                <p
+                    class="text-xs uppercase tracking-widest text-vermilion font-semibold mb-3 bg-gold/10 py-1 px-3 rounded-full inline-block">
+                    website Developer and craft Designer</p>
+
+                <div class="flex justify-center space-x-3 text-gold">
+                    <a href="https://www.linkedin.com/in/pulakita-mitra-307218363"
+                        class="w-8 h-8 rounded-full bg-maroonDark border border-gold/40 flex items-center justify-center hover:bg-gold hover:text-maroonDark transition"><i
+                            class="fa-brands fa-linkedin-in text-xs"></i></a>
+                    <a href="https://github.com/PukuMitra"
+                        class="w-8 h-8 rounded-full bg-maroonDark border border-gold/40 flex items-center justify-center hover:bg-gold hover:text-maroonDark transition"><i
+                            class="fa-brands fa-github text-xs"></i></a>
+                </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div
+                class="bg-maroonDeep/90 border border-gold/40 rounded-3xl p-6 text-center gold-glow transition duration-300 hover:-translate-y-2 hover:border-gold group">
+                <div
+                    class="relative w-32 h-32 mx-auto mb-6 rounded-full p-1 bg-gradient-to-r from-gold via-vermilion to-gold gold-glow">
+                    <div
+                        class="w-full h-full rounded-full bg-maroonDark flex items-center justify-center text-gold font-playfair text-3xl font-bold overflow-hidden border-2 border-maroonDark">
+                        <span class="group-hover:scale-110 transition duration-300"></span>
+                        <img src="manashi.jpg" alt="Member 3" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <h3 class="heading-font text-xl font-bold text-gold mb-1">Manashi Ghosh</h3>
+                <p
+                    class="text-xs uppercase tracking-widest text-vermilion font-semibold mb-3 bg-gold/10 py-1 px-3 rounded-full inline-block">
+                    craft Designer</p>
+
+
+            </div>
+
+            <!-- Member 4 -->
+            <div
+                class="bg-maroonDeep/90 border border-gold/40 rounded-3xl p-6 text-center gold-glow transition duration-300 hover:-translate-y-2 hover:border-gold group">
+                <div
+                    class="relative w-32 h-32 mx-auto mb-6 rounded-full p-1 bg-gradient-to-r from-gold via-vermilion to-gold gold-glow">
+                    <div
+                        class="w-full h-full rounded-full bg-maroonDark flex items-center justify-center text-gold font-playfair text-3xl font-bold overflow-hidden border-2 border-maroonDark">
+                        <span class="group-hover:scale-110 transition duration-300"></span>
+                        <img src="vaishnavi.jpg" alt="Member 4" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <h3 class="heading-font text-xl font-bold text-gold mb-1">Vaishnavi Burnwal</h3>
+                <p
+                    class="text-xs uppercase tracking-widest text-vermilion font-semibold mb-3 bg-gold/10 py-1 px-3 rounded-full inline-block">
+                   craft Designer</p>
+
+            </div>
+
+            <!-- Member 5 -->
+            <div
+                class="bg-maroonDeep/90 border border-gold/40 rounded-3xl p-6 text-center gold-glow transition duration-300 hover:-translate-y-2 hover:border-gold group">
+                <div
+                    class="relative w-32 h-32 mx-auto mb-6 rounded-full p-1 bg-gradient-to-r from-gold via-vermilion to-gold gold-glow">
+                    <div
+                        class="w-full h-full rounded-full bg-maroonDark flex items-center justify-center text-gold font-playfair text-3xl font-bold overflow-hidden border-2 border-maroonDark">
+                        <span class="group-hover:scale-110 transition duration-300"></span>
+                        <img src="ankita.jpg" alt="Member 5" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <h3 class="heading-font text-xl font-bold text-gold mb-1">Ankita Saha</h3>
+                <p
+                    class="text-xs uppercase tracking-widest text-vermilion font-semibold mb-3 bg-gold/10 py-1 px-3 rounded-full inline-block">
+                    designer</p>
+
+            </div>
+
+            <!-- Member 6 -->
+            <div
+                class="bg-maroonDeep/90 border border-gold/40 rounded-3xl p-6 text-center gold-glow transition duration-300 hover:-translate-y-2 hover:border-gold group">
+                <div
+                    class="relative w-32 h-32 mx-auto mb-6 rounded-full p-1 bg-gradient-to-r from-gold via-vermilion to-gold gold-glow">
+                    <div
+                        class="w-full h-full rounded-full bg-maroonDark flex items-center justify-center text-gold font-playfair text-3xl font-bold overflow-hidden border-2 border-maroonDark">
+                        <span class="group-hover:scale-110 transition duration-300"></span>
+                        <img src="urmika.jpg" alt="Member 6" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <h3 class="heading-font text-xl font-bold text-gold mb-1">Urmika Ghosh</h3>
+                <p
+                    class="text-xs uppercase tracking-widest text-vermilion font-semibold mb-3 bg-gold/10 py-1 px-3 rounded-full inline-block">
+                    designer</p>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="institution" class="py-20 px-4 sm:px-6 lg:px-8 bg-maroonDeep/70 border-t border-b border-gold/30">
+        <div
+            class="max-w-4xl mx-auto text-center bg-maroonDark/90 border border-gold/50 rounded-3xl p-8 sm:p-12 gold-glow">
+
+            <span class="text-gold uppercase tracking-widest text-xs font-semibold block mb-2">Proudly Representing Our
+                Institution</span>
+            <h2 class="heading-font text-2xl sm:text-4xl font-bold text-gold mb-2">Swami Vivekananda Institute of
+                Science and Technology</h2>
+            <h3 class="text-lg sm:text-xl font-semibold text-ivory/90 mb-6 uppercase tracking-wider">Department of
+                Artificial Intelligence and Data Science</h3>
+            <div class="w-32 h-0.5 bg-gold mx-auto mb-6 opacity-60"></div>
+            <p class="text-ivory/80 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+                "Bringing together innovation, creativity, and technology to build meaningful experiences inspired by
+                our culture and traditions."
+            </p>
+        </div>
+    </section>
+
+    <section class="py-16 px-4 text-center bg-gradient-to-r from-maroonDark via-vermilion/40 to-maroonDark">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="heading-font text-3xl font-bold text-gold mb-4">Experience the Festive Spirit</h2>
+            <p class="text-ivory/80 text-sm mb-8">Click below to send traditional Bengali festival greetings to your
+                friends and loved ones.</p>
+            <button onclick="openWishesModal()"
+                class="bg-gold hover:bg-yellow-500 text-maroonDark font-bold px-8 py-4 rounded-full text-base uppercase tracking-wider shadow-2xl transition transform hover:scale-105 gold-glow">
+                <i class="fa-solid fa-hand-holding-heart mr-2"></i> Send Durga Puja Wishes
+            </button>
+        </div>
+    </section>
+
+    <footer class="bg-maroonDeep border-t border-gold/40 py-12 px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <h3 class="heading-font text-2xl font-bold text-gold">SUBHO SARADIYA</h3>
+            <p class="text-xs uppercase tracking-widest text-ivory/80">Presented by Team Devi Warrior</p>
+            <p class="text-xs text-ivory/70">Swami Vivekananda Institute of Science and Technology • Department of
+                Artificial Intelligence and Data Science</p>
+            <div class="w-20 h-0.5 bg-gold mx-auto opacity-50"></div>
+            <p class="text-sm font-playfair italic text-gold">"May Maa Durga bless everyone with strength, wisdom,
+                happiness, and prosperity."</p>
+            <p class="text-xs text-ivory/60 pt-4">&copy; <span id="current-year">2026</span> Team Devi Warrior. All
+                rights reserved.</p>
+            <p class="text-xs text-ivory/60 pt-4">
+                <span class="font-semibold">website created by:pulakita mitra</span><br>
+                <span id="profile-link">www.linkedin.com/in/pulakita-mitra-307218363</span>
+                <button onclick="copyProfileLink()"class=" text-gold hover:text-ivory text-xs">copy link</button>
+                
+
+            </p>
+
+        </div>
+    </footer>
+
+
+
+    <!-- MODAL: Festive Wishes Generator -->
+    <div id="wishes-modal"
+        class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div
+            class="bg-maroonDeep border-2 border-gold rounded-3xl max-w-lg w-full p-8 gold-glow shadow-2xl text-center relative">
+            <button onclick="closeWishesModal()"
+                class="absolute top-4 right-4 text-gold hover:text-ivory text-xl font-bold focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div
+                class="w-16 h-16 rounded-full bg-vermilion border-2 border-gold mx-auto flex items-center justify-center text-gold text-3xl mb-4 gold-glow">
+                🪔
+            </div>
+            <h3 class="heading-font text-2xl font-bold text-gold mb-2">শুভ শারদীয়া!</h3>
+            <p class="heading-font italic text-ivory/90 text-sm sm:text-base leading-relaxed mb-6">
+                "Wishing you happiness, prosperity, strength, and new beginnings on the auspicious occasion of Durga
+                Puja."
+            </p>
+            <div class="bg-maroonDark/80 border border-gold/40 p-4 rounded-2xl mb-6">
+                <p class="text-xs text-gold uppercase tracking-widest font-semibold mb-1">From Team Devi Warrior</p>
+                <p class="text-xs text-ivory/70">Swami Vivekananda Institute of Science and Technology</p>
+            </div>
+            <button onclick="closeWishesModal()"
+                class="bg-gold hover:bg-yellow-500 text-maroonDark font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition w-full">
+                Pranaam & Thank You
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL: Watch Artwork Animation Simulated Player -->
+    <!--<div id="artwork-modal"
+        class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
+        <div
+            class="bg-maroonDeep border-2 border-gold rounded-3xl max-w-2xl w-full p-8 gold-glow shadow-2xl text-center relative">
+            <button onclick="closeArtworkModal()"
+                class="absolute top-4 right-4 text-gold hover:text-ivory text-xl font-bold focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="heading-font text-2xl font-bold text-gold mb-2">turtleDurga.py Execution Simulation</h3>
+            <p class="text-xs text-ivory/70 mb-6">Running turtle graphics procedures: draw_halo() -> draw_face() ->
+                draw_eyes() -> draw_crown()</p>
+
+            <div
+                class="w-full h-64 bg-maroonDark border border-gold/40 rounded-2xl flex items-center justify-center relative overflow-hidden mb-6 gold-glow">
+                <div class="absolute inset-0 bg-radial from-gold/30 via-transparent to-transparent animate-pulse"></div>
+                <div id="turtle-canvas-sim" class="text-gold font-playfair text-xl font-bold z-10">
+                    <i class="fa-solid fa-pen-nib animate-bounce text-3xl block mb-2"></i>
+                    Drawing Goddess Durga...
+                </div>
+            </div>
+
+            <div class="flex justify-center space-x-4">
+
+            </div>
+        </div>-->
+    </div>
+
+    <script>
+        // Dynamic Footer Year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Floating Flower Petals Generator
+        const petalsContainer = document.getElementById('petals-container');
+        const petalCount = 15;
+        for (let i = 0; i < petalCount; i++) {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            const size = Math.random() * 10 + 8;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size * 1.4}px`;
+            petal.style.left = `${Math.random() * 100}vw`;
+            petal.style.top = `-10vh`;
+            petal.style.animationDuration = `${Math.random() * 8 + 6}s`;
+            petal.style.animationDelay = `${Math.random() * 5}s`;
+            petal.style.opacity = Math.random() * 0.7 + 0.3;
+            petalsContainer.appendChild(petal);
+        }
+
+        // Modal Controls
+        function openSourceCodeModal() {
+            document.getElementById('source-modal').classList.remove('hidden');
+        }
+        function closeSourceCodeModal() {
+            document.getElementById('source-modal').classList.add('hidden');
+        }
+
+        function openWishesModal() {
+            document.getElementById('wishes-modal').classList.remove('hidden');
+        }
+        function closeWishesModal() {
+            document.getElementById('wishes-modal').classList.add('hidden');
+        }
+
+        function watchArtworkModal() {
+            document.getElementById('artwork-modal').classList.remove('hidden');
+        }
+        function closeArtworkModal() {
+            document.getElementById('artwork-modal').classList.add('hidden');
+        }
+
+        // Background Music Control
+        ```const bgAudio = document.getElementById('bg-audio');
+        const audioToggleBtn = document.getElementById('audio-toggle-btn');
+        const audioIcon = document.getElementById('audio-icon');
+        const audioTooltip = document.getElementById('audio-tooltip');
+        let isPlaying = false;
+
+        if (bgAudio && audioToggleBtn) {
+            bgAudio.volume = 0.4;
+
+            audioToggleBtn.addEventListener('click', () => {
+                if (isPlaying) {
+                    bgAudio.pause();
+                    isPlaying = false;
+                    audioIcon.className = 'fa-solid fa-volume-xmark text-lg';
+                    audioTooltip.textContent = 'Play Music';
+                    audioToggleBtn.setAttribute('aria-label', 'Play background music');
+                } else {
+                    bgAudio.play().then(() => {
+                        isPlaying = true;
+                        audioIcon.className = 'fa-solid fa-volume-high text-lg';
+                        audioTooltip.textContent = 'Mute Music';
+                        audioToggleBtn.setAttribute('aria-label', 'Mute background music');
+                    }).catch(err => {
+                        console.error("Audio playback blocked by browser:", err);
+                        showModal("Audio Playback Notice", "Browser autoplay policy requires interaction before audio can start. Click the music button to enjoy festive sound!");
+                    });
+                }
+            });
+        }```
+
+        // Floating Golden Particles generator
+        const particlesContainer = document.getElementById('particles-container');
+        if (particlesContainer) {
+            const particleCount = 25;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('festive-particle');
+                const size = Math.random() * 6 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.bottom = `-20px`;
+                particle.style.animationDuration = `${Math.random() * 8 + 6}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+
+        // Python File Download Simulation
+        ```function downloadPythonFile() {
+            const pythonCode = document.getElementById('python-code-content').innerText;
+            const blob = new Blob([pythonCode], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'turtleDurga.py';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }```
+    </script>
+</body>
+
+</html>
